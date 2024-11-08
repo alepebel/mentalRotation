@@ -169,7 +169,7 @@ for  n_trial, thisTrial in enumerate(trials):
     data_matrix.append(trial_data)
 
     data = pd.DataFrame(data_matrix, columns=['subj', 'gender', 'age', 'hand', 'trial', 'ref_angle', 'diff_angle', 'version', 'letter_left', 'letter_right', 'trial_type', 'response', 'rt', 'correct'])
-    data.to_csv('mental_rotation.csv', index=False)
+    data.to_csv(fileName+'.csv', index=False)
 
     if (n_trial == 5) & (test_trials == 'yes'):
         break
