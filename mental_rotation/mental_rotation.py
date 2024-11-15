@@ -52,7 +52,7 @@ versions = ['normal', 'inverted']
 
 
 # Define how many times each combination will be repeated
-trial_reps = 6
+trial_reps = 10
 
 # Create the combinations of experimental conditions
 stimList = []
