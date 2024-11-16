@@ -52,7 +52,7 @@ versions = ['normal', 'inverted']
 
 
 # Define how many times each combination will be repeated
-trial_reps = 10
+trial_reps = 15
 
 # Create the combinations of experimental conditions
 stimList = []
@@ -165,11 +165,13 @@ for  n_trial, thisTrial in enumerate(trials):
     kb.clearEvents()
 
     # Save the trial data to matrix
-    trial_data = [subjInfo['observer'], subjInfo['gender (H/M/Other)'], subjInfo['age'],subjInfo['hand (L/R)'], n_trial + 1, ref_angle, diff_angle, version, letter_left.text, letter_right.text, trial_type, thisResp, rt, correct]
+    trial_data = [subjInfo['observer'], subjInfo['gender (H/M/Other)'], subjInfo['age'],subjInfo['hand (L/R)'], n_trial + 1, ref_angle, diff_angle, angle,  version, letter_left.text, letter_right.text, trial_type, thisResp, rt, correct]
     data_matrix.append(trial_data)
 
-    data = pd.DataFrame(data_matrix, columns=['subj', 'gender', 'age', 'hand', 'trial', 'ref_angle', 'diff_angle', 'version', 'letter_left', 'letter_right', 'trial_type', 'response', 'rt', 'correct'])
-    data.to_csv(fileName+'.csv', index=False)
+    data = pd.DataFrame(data_matrix, columns=['subj', 'gender', 'age', 'hand', 'trial', 'ref_angle', 'diff_angle', 'angle', 'version', 'letter_left', 'letter_right', 'trial_type', 'response', 'rt', 'correct'])
+    data.astype({'rt': 'float','diff_angle':'float'}).dtypes
+    #data.to_csv(fileName+'.csv', index=False)
+    data.to_excel(fileName+'.xlsx', index=False)
 
     if (n_trial == 5) & (test_trials == 'yes'):
         break
